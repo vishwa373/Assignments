@@ -1,0 +1,247 @@
+# Assignment No. 6 - Pandas (Series, DataFrames, GroupBy, Merge/Join, Cleaning)
+
+import numpy as np
+import pandas as pd
+from numpy.random import randn
+
+# ------------------------------------------------------------------------------
+# Pandas Series
+# ------------------------------------------------------------------------------
+labels = ["a", "b", "c"]
+my_list = [10, 20, 30]
+arr = np.array([10, 20, 30])
+d = {"a": 10, "b": 20, "c": 30}
+
+print(pd.Series(data=my_list))
+print(pd.Series(data=my_list, index=labels))
+print(pd.Series(my_list, labels))
+
+# Using NumPy array
+print(pd.Series(arr))
+print(pd.Series(arr, labels))
+
+# Using dictionary
+print(pd.Series(d))
+
+# Using tuples
+labtup = ("a", "b", "c")
+my_tup = (10, 20, 30)
+print(pd.Series(labtup, my_tup), "\n")
+print(pd.Series(my_tup, labtup))
+
+# Series of built-in functions
+print(pd.Series([sum, print, len]))
+
+# Series indexing and arithmetic
+ser1 = pd.Series([1, 2, 3, 4], index=["USA", "Germany", "USSR", "Japan"])
+ser2 = pd.Series([1, 2, 5, 4], index=["USA", "Germany", "Italy", "Japan"])
+print(ser1["USA"])
+print(ser1 + ser2)
+
+
+# ------------------------------------------------------------------------------
+# Pandas DataFrames
+# ------------------------------------------------------------------------------
+np.random.seed(100)
+df = pd.DataFrame(randn(5, 4), index="A B C D E".split(), columns="W X Y Z".split())
+print(df)
+
+df2 = pd.DataFrame(randn(6, 8))
+print(df2)
+
+# Selecting columns
+print(df["W"])
+print(df[["W", "Z"]])
+print(df.W)  # SQL-style syntax (not recommended)
+print(type(df))
+print(type(df["W"]))
+
+# Creating and dropping columns/rows
+df["new"] = df["W"] + df["Y"]
+print(df)
+
+print(df.drop("new", axis=1))  # axis=1 for columns, axis=0 for rows
+print(df.drop("E", axis=0))
+
+# Selecting rows and subsets
+print(df.loc["A"])
+print(df.iloc[3])  # selecting row by integer index
+print(df.loc[["A", "B"], ["W", "Y"]])
+
+# Conditional selection
+print(df > 0)
+print(df[df > 0])
+print(df[df["W"] > 0]["Y"])
+print(df[df["W"] > 0][["Y", "X"]])
+print(df[(df["W"] > 0) & (df["Y"] > 0)])
+
+# Index operations
+print(df.reset_index())
+
+newind = "CA NY WY OR CO".split()
+print(newind)
+df["States"] = newind
+print(df)
+
+df.set_index("States", inplace=True)
+print(df)
+
+
+# ------------------------------------------------------------------------------
+# Missing Data
+# ------------------------------------------------------------------------------
+df_missing = pd.DataFrame({"A": [1, 2, np.nan], "B": [5, np.nan, np.nan], "C": [1, 2, 3]})
+print(df_missing)
+
+
+# ------------------------------------------------------------------------------
+# GroupBy
+# ------------------------------------------------------------------------------
+data = {
+    "Company": ["GOOG", "GOOG", "MSFT", "MSFT", "FB", "FB"],
+    "Person": ["Sam", "Charlie", "Amy", "Vanessa", "Carl", "Sarah"],
+    "Sales": [200, 120, 340, 124, 243, 350],
+}
+df_grp = pd.DataFrame(data)
+print(df_grp)
+
+by_comp = df_grp.groupby("Company")
+print(by_comp["Sales"].mean())
+print(by_comp["Sales"].max())
+print(by_comp["Sales"].min())
+print(by_comp["Sales"].count())
+print(by_comp["Sales"].std())
+print(by_comp.describe())
+print(by_comp.describe().transpose())
+print(by_comp.describe().transpose()["GOOG"])
+
+
+# ------------------------------------------------------------------------------
+# Merging, Joining, and Concatenation
+# ------------------------------------------------------------------------------
+df1 = pd.DataFrame(
+    {
+        "A": ["A0", "A1", "A2", "A3"],
+        "B": ["B0", "B1", "B2", "B3"],
+        "C": ["C0", "C1", "C2", "C3"],
+        "D": ["D0", "D1", "D2", "D3"],
+    },
+    index=[0, 1, 2, 3],
+)
+
+df2 = pd.DataFrame(
+    {
+        "A": ["A4", "A5", "A6", "A7"],
+        "B": ["B4", "B5", "B6", "B7"],
+        "C": ["C4", "C5", "C6", "C7"],
+        "D": ["D4", "D5", "D6", "D7"],
+    },
+    index=[4, 5, 6, 7],
+)
+
+df3 = pd.DataFrame(
+    {
+        "A": ["A8", "A9", "A10", "A11"],
+        "B": ["B8", "B9", "B10", "B11"],
+        "C": ["C8", "C9", "C10", "C11"],
+        "D": ["D8", "D9", "D10", "D11"],
+    },
+    index=[8, 9, 10, 11],
+)
+
+print(pd.concat([df1, df2, df3]))
+print(pd.concat([df1, df2, df3], axis=1))
+
+left = pd.DataFrame(
+    {
+        "key": ["K0", "K1", "K2", "K3"],
+        "A": ["A0", "A1", "A2", "A3"],
+        "B": ["B0", "B1", "B2", "B3"],
+    }
+)
+
+right = pd.DataFrame(
+    {
+        "key": ["K0", "K1", "K2", "K4"],
+        "C": ["C0", "C1", "C2", "C3"],
+        "D": ["D0", "D1", "D2", "D3"],
+    }
+)
+
+print(pd.merge(left, right, how="inner", on="key"))
+print(pd.merge(left, right, how="outer", on="key"))
+print(pd.merge(left, right, how="cross"))
+print(pd.merge(left, right, how="left", on=["key"]))
+
+left_idx = pd.DataFrame(
+    {"A": ["A0", "A1", "A2", "A3"], "B": ["B0", "B1", "B2", "B3"]},
+    index=["K0", "K1", "K2", "K3"],
+)
+
+right_idx = pd.DataFrame(
+    {"C": ["C0", "C1", "C2", "C3"], "D": ["D0", "D1", "D2", "D3"]},
+    index=["K0", "K2", "K4", "K5"],
+)
+
+print(left_idx.join(right_idx))
+print(right_idx.join(left_idx))
+print(left_idx.join(right_idx, how="outer"))
+print(left_idx.join(right_idx, how="inner"))
+print(left_idx.join(right_idx, how="cross"))
+print(right_idx.join(left_idx, how="outer"))
+print(right_idx.join(left_idx, how="inner"))
+print(right_idx.join(left_idx, how="cross"))
+
+
+# ------------------------------------------------------------------------------
+# Common DataFrame Operations
+# ------------------------------------------------------------------------------
+df_ops = pd.DataFrame(
+    {
+        "col1": [1, 2, 3, 4],
+        "col2": [444, 555, 666, 444],
+        "col3": ["abc", "def", "ghi", "xyz"],
+    }
+)
+
+print(df_ops.head(2))
+print(df_ops["col1"] * 2)
+print(df_ops["col1"] ** 10)
+print(df_ops.tail(2))
+print(df_ops[(df_ops["col1"] > 2) & (df_ops["col2"] == 444)])
+print(df_ops[(df_ops["col1"] > 2) & (df_ops["col2"] == 444)]["col3"])
+
+
+# ------------------------------------------------------------------------------
+# Data Preprocessing / Cleaning CSV Data
+# ------------------------------------------------------------------------------
+csv_path = "C:/Users/Sachin Kumar/Downloads/data.csv"
+
+df_csv = pd.read_csv(csv_path)
+new_df = df_csv.dropna()  # removes rows with empty cells
+print(new_df.to_string())
+
+df_csv = pd.read_csv(csv_path)
+df_csv.fillna(135, inplace=True)
+print(df_csv.to_string())
+
+df_csv = pd.read_csv(csv_path)
+df_csv.fillna("vv", inplace=True)
+print(df_csv.to_string())
+
+df_csv = pd.read_csv(csv_path)
+df_csv.fillna({"Calories": 55}, inplace=True)
+print(df_csv.to_string())
+
+mean_val = df_csv["Calories"].mean()
+df_csv.fillna({"Calories": mean_val}, inplace=True)
+print(df_csv.to_string())
+
+median_val = df_csv["Calories"].median()
+df_csv.fillna({"Calories": median_val}, inplace=True)
+print(df_csv.to_string())
+
+mode_val = df_csv["Calories"].mode()[0]
+df_csv.fillna({"Calories": mode_val}, inplace=True)
+print(df_csv.to_string())
+```[cite: 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
