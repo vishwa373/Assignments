@@ -1,0 +1,275 @@
+# Python Assignment 02 - Conditional Statements and Loops
+
+# =============================================================================
+# CONDITIONAL STATEMENT - if .... else statement
+# =============================================================================
+
+#if example
+num = 3
+if num >= 0 :
+    print('It is positive')
+# Output: It is positive
+
+#if else example
+num = -1
+if num >= 0 :
+    print('It is positive')
+else :
+    print('It is negative')
+# Output: It is negative
+
+#if elif else example
+num = 0
+if num > 0 :
+    print('It is positive')
+elif num == 0 :
+    print('It is zero')
+else :
+    print('It is negative')
+# Output: It is zero
+
+
+# =============================================================================
+# CONTROL STRUCTURE .. FOR LOOP
+# =============================================================================
+
+#for loop example
+for numb in 1,2,3,4,5 :
+    print("The current number is ", numb)
+# Output:
+# The current number is  1
+# The current number is  2
+# The current number is  3
+# The current number is  4
+# The current number is  5
+
+#for loop with range
+for i in range(10) :
+    print(i)
+# Output: 0 1 2 3 4 5 6 7 8 9 (one number per line)
+
+#for loop with range and stepvalue of difference
+for i in range(2,20,2) :
+    print(i)
+# Output: 2 4 6 8 10 12 14 16 18 (one number per line)
+
+#for loop with range
+for i in range(1,11) :
+    print(i)
+# Output: 1 2 3 4 5 6 7 8 9 10 (one number per line)
+
+#for loop with range and stepvalue of difference
+for i in range(2,40,3) :
+    print("The current number is ", i)
+# Output:
+# The current number is  2
+# The current number is  5
+# The current number is  8
+# The current number is  11
+# The current number is  14
+# The current number is  17
+# The current number is  20
+# The current number is  23
+# The current number is  26
+# The current number is  29
+# The current number is  32
+# The current number is  35
+# The current number is  38
+
+#for loop with list
+numbers_list = [1, 2, 3, 4, 5, 6, 7]
+
+for i in numbers_list :
+    square = i*i
+    print("The square of ", i, " is",square)
+# Output:
+# The square of  1  is 1
+# The square of  2  is 4
+# The square of  3  is 9
+# The square of  4  is 16
+# The square of  5  is 25
+# The square of  6  is 36
+# The square of  7  is 49
+
+
+# =============================================================================
+# CLASS QUESTION
+# =============================================================================
+
+#list of prices of groceries
+groce_lt = [250, 350, 500, 600, 120]
+print(groce_lt)
+# Output: [250, 350, 500, 600, 120]
+
+#removing any item having price above 500 rupees
+groce_lt = [price for price in groce_lt if price<=500]
+print(groce_lt)
+# Output: [250, 350, 500, 120]
+
+#insert new item at position 2
+groce_lt.insert(1, 200)
+print(groce_lt)
+# Output: [250, 200, 350, 500, 120]
+
+#sorting in ascending order
+groce_lt.sort()
+
+print(groce_lt)
+# Output: [120, 200, 250, 350, 500]
+
+#printing total sum
+listsum = int(groce_lt[0]+groce_lt[1]+groce_lt[2]+groce_lt[3]+groce_lt[4])
+print(listsum)
+# Output: 1420
+
+
+# =============================================================================
+# ASSIGNMENT NO.2
+# =============================================================================
+
+# ==========================================
+# PROGRAM 1: Largest of Three Numbers
+# ==========================================
+
+# Taking input from the user
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+c = int(input("Enter third number: "))
+
+# Checking which number is the largest using if...elif...else
+if (a > b) and (a > c):
+    # Executed only when a is greater than both b and c
+    print(a, "is the largest number")
+elif (b > a) and (b > c):
+    # Executed only when b is greater than both a and c
+    print(b, "is the largest number")
+else:
+    # If neither a nor b is largest → then c is largest
+    print(c, "is the largest number")
+# Sample run (inputs: 7, 4, 8):
+# Enter first number:  7
+# Enter second number:  4
+# Enter third number:  8
+# 8 is the largest number
+
+
+# ==========================================
+# PROGRAM 2: Largest of Three (Handles Equal)
+# ==========================================
+
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+c = int(input("Enter third number: "))
+
+# First check if all are equal
+if a == b == c:
+    print("All three numbers are equal")
+elif a >= b and a >= c:
+    print(a, "is the largest number")
+elif b >= a and b >= c:
+    print(b, "is the largest number")
+else:
+    print(c, "is the largest number")
+# Sample run (inputs: 67, 57, 78):
+# Enter first number:  67
+# Enter second number:  57
+# Enter third number:  78
+# 78 is the largest number
+
+
+# ==========================================
+# LOGICAL & RELATIONAL OPERATORS EXAMPLES
+# ==========================================
+
+a = 10
+b = 20
+
+# Relational operators: <, >, <=, >=, ==, !=
+print("a < b:", a < b)
+print("a > b:", a > b)
+print("a <= b:", a <= b)
+print("a >= b:", a >= b)
+print("a == b:", a == b)
+print("a != b:", a != b)
+
+# Logical operators: and, or, not
+x = 5
+y = 15
+
+print("x > 0 and y > 10 →", x > 0 and y > 10)
+print("x == 5 or y == 100 →", x == 5 or y == 100)
+print("not(x == 5) →", not(x == 5))
+# Output:
+# a < b: True
+# a > b: False
+# a <= b: True
+# a >= b: False
+# a == b: False
+# a != b: True
+# x > 0 and y > 10 → True
+# x == 5 or y == 100 → True
+# not(x == 5) → False
+
+
+# ==========================================
+# PROGRAM 3: Grade Based on Marks
+# (this cell was not run in the notebook)
+# ==========================================
+
+# Taking marks from user
+marks = int(input("Enter marks in Math: "))
+
+# Checking grade using multiple conditions
+if marks >= 90 and marks <= 100:
+    print("Grade: O")
+elif marks >= 80 and marks <= 89:
+    print("Grade: A+")
+elif marks >= 70 and marks <= 79:
+    print("Grade: A")
+elif marks >= 60 and marks <= 69:
+    print("Grade: B")
+elif marks >= 50 and marks <= 59:
+    print("Grade: C")
+elif marks >= 40 and marks <= 49:
+    print("Grade: P")
+elif marks >= 0 and marks < 40:
+    print("Grade: F")
+else:
+    # If marks are not between 0 and 100
+    print("Invalid Marks! Please enter value between 0 and 100.")
+
+
+# =============================================================================
+# PRACTISE QUESTIONS (these cells were not run in the notebook)
+# =============================================================================
+
+#Check if a number is even or odd
+
+num = int(input("Enter a number: "))
+
+if num % 2 == 0:
+    print("Even number")
+else:
+    print("Odd number")
+
+
+#Check if a number is positive, negative or zero
+
+num = int(input("Enter a number: "))
+
+if num > 0:
+    print("Positive number")
+elif num < 0:
+    print("Negative number")
+else:
+    print("Number is zero")
+
+
+# Check voting eligibility
+
+age = int(input("Enter your age: "))
+
+if age >= 18:
+    print("Eligible to vote")
+else:
+    print("Not eligible to vote")
