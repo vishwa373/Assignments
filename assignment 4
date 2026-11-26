@@ -1,0 +1,734 @@
+# Python Assignment 04 - NumPy and Matrices
+
+# NUMPY BASICS
+
+# NUMPY or NUmerical Python is a built-in function
+# It is a functonal package for numerical computations in Python
+
+import numpy as np
+# create an array
+# syntax : numpy.array(object)
+
+x = np.array([1,2,3,4])
+print(x)
+# Output: [1 2 3 4]
+
+type(x)
+# Output: numpy.ndarray
+
+# can handle different categorical entities
+
+n = np.array([1,2,'n',4])
+
+print(n) #each value will be coverted to same data type
+# Output: ['1' '2' 'n' '4']
+
+# if retstop is given False, then it does not return step value
+# syntax : numpy.
+
+b = np.linspace(start=1,stop=5,num=10,endpoint=True,retstep=False)
+print(b)
+# Output:
+# [1.         1.44444444 1.88888889 2.33333333 2.77777778 3.22222222
+#  3.66666667 4.11111111 4.55555556 5.        ]
+
+# if retstop is given True, then it returns step value
+a = np.linspace(start=1,stop=5,num=10,endpoint=True,retstep=True)
+print(a)
+# Output:
+# (array([1.        , 1.44444444, 1.88888889, 2.33333333, 2.77777778,
+#        3.22222222, 3.66666667, 4.11111111, 4.55555556, 5.        ]), np.float64(0.4444444444444444))
+
+c = np.arange(start=1, stop=10, step=2)
+print(c)
+# Output: [1 3 5 7 9]
+
+np.ones((10,10))
+# Output: a 10x10 array filled with 1.
+# array([[1., 1., 1., 1., 1., 1., 1., 1., 1., 1.],
+#        ... (10 rows in total) ...
+#        [1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]])
+
+# ERROR DEMO (ValueError: negative dimensions are not allowed)
+# np.ones((-1,-1)) ## negative values are not allowed
+
+np.ones((3,4),int)
+# Output:
+# array([[1, 1, 1, 1],
+#        [1, 1, 1, 1],
+#        [1, 1, 1, 1]])
+
+np.zeros((3,4))## onlyb zero values are allowed
+# Output:
+# array([[0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.]])
+
+np.zeros((3,4),int)
+# Output:
+# array([[0, 0, 0, 0],
+#        [0, 0, 0, 0],
+#        [0, 0, 0, 0]])
+
+# test case 0
+np.ones((3,4),str)
+# Output:
+# array([['1', '1', '1', '1'],
+#        ['1', '1', '1', '1'],
+#        ['1', '1', '1', '1']], dtype='<U1')
+
+# ONLY POSSIBLE ATTRIBUTES FOR NUMPY MODULE ARE - numpy.ones((x,y),dt) and numpy.zeros((x,y),dt)
+# others do not work at all
+
+# generates an array having random values from the range 0 to 1
+
+np.random.rand(5)
+# Output (random, will differ on every run):
+# array([0.53087025, 0.17956529, 0.89311114, 0.85995541, 0.78312652])
+
+np.random.rand(3,3)
+# Output (random, will differ on every run):
+# array([[0.31038941, 0.48906311, 0.47055265],
+#        [0.22421737, 0.56541255, 0.43052567],
+#        [0.66587113, 0.91622577, 0.4415212 ]])
+
+np.logspace(1,10,num=5,endpoint=True,base=10.0)
+# Output:
+# array([1.00000000e+01, 1.77827941e+03, 3.16227766e+05, 5.62341325e+07,
+#        1.00000000e+10])
+
+np.logspace(1,2,num=5,endpoint=False,base=10.0)
+# Output: array([10.        , 15.84893192, 25.11886432, 39.81071706, 63.09573445])
+
+np.logspace(1,2,num=5,endpoint=True,base=10.0)
+# Output:
+# array([ 10.        ,  17.7827941 ,  31.6227766 ,  56.23413252,
+#        100.        ])
+
+np.logspace(1,5,num=5,endpoint=True,base=2.71828)
+# Output:
+# array([  2.71828   ,   7.38904616,  20.08549639,  54.59800313,
+#        148.41265995])
+
+x = range(1000)
+print(list(x)) ## make list of 1 to 1000
+# Output: [0, 1, 2, 3, ..., 998, 999]   (all 1000 numbers, 0 to 999, were printed)
+
+y = np.array(x)
+print(y)
+# Output: [  0   1   2   3 ... 997 998 999]   (all 1000 numbers, 0 to 999, were printed)
+
+
+# =============================================================================
+# EXERCISE QUESTIONS
+# =============================================================================
+
+# question no 1
+
+import numpy as np
+
+# Step 1: Store temperature values in a NumPy array
+temperatures = np.array([32, 33, 31, 29, 35, 36, 34])
+
+# Step 2: Calculate average, maximum, and minimum temperature
+average_temp = np.mean(temperatures)
+max_temp = np.max(temperatures)
+min_temp = np.min(temperatures)
+
+# Step 3: Find and display days when temperature was above average
+days_above_avg = np.where(temperatures > average_temp)[0] + 1  # +1 for day numbering
+
+# Step 4: Display results
+print("Temperature Tracker Results")
+print("----------------------------")
+print(f"Temperatures over 7 days: {temperatures}")
+print(f"Average Temperature: {average_temp:.2f}°C")
+print(f"Maximum Temperature: {max_temp}°C")
+print(f"Minimum Temperature: {min_temp}°C")
+print(f"Days with temperature above average: {days_above_avg}")
+# Output:
+# Temperature Tracker Results
+# ----------------------------
+# Temperatures over 7 days: [32 33 31 29 35 36 34]
+# Average Temperature: 32.86°C
+# Maximum Temperature: 36°C
+# Minimum Temperature: 29°C
+# Days with temperature above average: [2 5 6 7]
+
+
+# question no 3
+
+import numpy as np
+
+# Toy production data for 4 weeks (3 units each)
+production = np.array([
+    [200, 220, 250],  # Week 1
+    [80, 240, 260],   # Week 2
+    [210, 230, 270],  # Week 3
+    [190, 250, 280]   # Week 4
+])
+
+# Total production for each week
+total_per_week = np.sum(production, axis=1)
+
+# Average production per week
+average_per_week = np.mean(production, axis=1)
+
+# Display results
+for i in range(len(total_per_week)):
+    print(f"Week {i+1}: Total = {total_per_week[i]}, Average = {average_per_week[i]:.2f}")
+# Output:
+# Week 1: Total = 670, Average = 223.33
+# Week 2: Total = 580, Average = 193.33
+# Week 3: Total = 710, Average = 236.67
+# Week 4: Total = 720, Average = 240.00
+
+
+# question no 4
+
+import numpy as np
+
+# Step 1: Represent weekly sales data (in ₹) for 3 products over 4 weeks
+sales = np.array([
+    [200, 220, 250],   # Week 1
+    [250, 240, 260],   # Week 2
+    [210, 230, 270],   # Week 3
+    [240, 270, 290]    # Week 4
+])
+
+# Step 2: Find total sales for each product (sum of columns)
+total_sales_per_product = np.sum(sales, axis=0)
+
+# Step 3: Find total sales per week (sum of rows)
+total_sales_per_week = np.sum(sales, axis=1)
+
+# Step 4: Find average sales per product
+average_sales_per_product = np.mean(sales, axis=0)
+
+# Step 5: Find overall total and average sales
+overall_total_sales = np.sum(sales)
+overall_average_sales = np.mean(sales)
+
+# Step 6: Display results
+print("Supermarket Sales Data Analysis")
+print("---------------------------------")
+print("Weekly Sales Data (₹):\n", sales)
+print("\nTotal Sales per Product:", total_sales_per_product)
+print("Total Sales per Week:", total_sales_per_week)
+print("\nAverage Sales per Product:", average_sales_per_product)
+print(f"\nOverall Total Sales: ₹{overall_total_sales}")
+print(f"Overall Average Sales: ₹{overall_average_sales:.2f}")
+# Output:
+# Supermarket Sales Data Analysis
+# ---------------------------------
+# Weekly Sales Data (₹):
+#  [[200 220 250]
+#  [250 240 260]
+#  [210 230 270]
+#  [240 270 290]]
+#
+# Total Sales per Product: [ 900  960 1070]
+# Total Sales per Week: [670 750 710 800]
+#
+# Average Sales per Product: [225.  240.  267.5]
+#
+# Overall Total Sales: ₹2930
+# Overall Average Sales: ₹244.17
+
+
+# QUEStion no 5
+
+import numpy as np
+
+# Marks of 5 students in 5 subjects
+marks = np.array([
+    [75, 80, 92, 88, 70],
+    [68, 74, 81, 90, 76],
+    [82, 79, 85, 87, 89],
+    [90, 88, 84, 86, 91],
+    [72, 70, 78, 80, 74]
+])
+
+# Average marks per student
+avg_student = np.mean(marks, axis=1)
+print("Average marks per student:", avg_student)
+
+# Average marks per subject
+avg_subject = np.mean(marks, axis=0)
+print("Average marks per subject:", avg_subject)
+
+# Identify the top-performing student
+top_student_index = np.argmax(avg_student)
+print("Top performing student is Student", top_student_index + 1)
+# Output:
+# Average marks per student: [81.  77.8 84.4 87.8 74.8]
+# Average marks per subject: [77.4 78.2 84.  86.2 80. ]
+# Top performing student is Student 4
+
+
+# question no 6
+
+import numpy as np
+
+# Air Quality Index (AQI) data for 4 cities over 5 days
+AirQuality = np.array([
+    [120, 134, 128, 140, 150],
+    [100, 110, 125, 135, 142],
+    [160, 155, 170, 165, 180],
+    [90, 95, 100, 105, 110]
+])
+
+# Average AQI for each city
+avg_city = np.mean(AirQuality, axis=1)
+print("Average AQI per city:", avg_city)
+
+# Find the day with the highest overall pollution
+daily_avg = np.mean(AirQuality, axis=0)
+most_polluted_day = np.argmax(daily_avg) + 1
+print("Day with highest overall pollution: Day", most_polluted_day)
+# Output:
+# Average AQI per city: [134.4 122.4 166.  100. ]
+# Day with highest overall pollution: Day 5
+
+
+# =============================================================================
+# ASSIGNMENT NO 4
+# =============================================================================
+
+#1. Matrix Using Python List (Without NumPy)
+
+# ------------------------------
+# Matrix Operations Using Lists
+# ------------------------------
+
+# Function to create a matrix using nested lists
+def create_matrix(rows, cols):
+    """
+    This function creates a matrix (list of lists)
+    by taking user input for each element.
+    """
+    matrix = []
+    print(f"\nEnter elements for a {rows}x{cols} matrix:")
+
+    for i in range(rows):
+        row = []  # Empty row list
+        for j in range(cols):
+            value = int(input(f"Enter element at position ({i},{j}): "))
+            row.append(value)
+        matrix.append(row)
+
+    return matrix
+
+
+# Function to add two matrices element-wise
+def add_matrices(mat1, mat2):
+    """
+    This function adds two matrices element-wise.
+    Both matrices MUST be of the same dimensions.
+    """
+    rows = len(mat1)
+    cols = len(mat1[0])
+
+    result = []
+
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            row.append(mat1[i][j] + mat2[i][j])  # Add corresponding elements
+        result.append(row)
+
+    return result
+
+
+# Function to display a matrix in clean format
+def display_matrix(matrix, title="Matrix"):
+    print(f"\n{title}:")
+    for row in matrix:
+        print(row)
+
+
+# ------------------------------
+# DRIVER CODE
+# ------------------------------
+
+# Taking number of rows & columns
+r = int(input("Enter number of rows: "))
+c = int(input("Enter number of columns: "))
+
+# Creating two matrices
+matrix1 = create_matrix(r, c)
+matrix2 = create_matrix(r, c)
+
+# Display the matrices
+display_matrix(matrix1, "Matrix 1")
+display_matrix(matrix2, "Matrix 2")
+
+# Performing matrix addition
+result_matrix = add_matrices(matrix1, matrix2)
+
+# Display result
+display_matrix(result_matrix, "Matrix Addition Result")
+# Sample run (rows = 2, columns = 2, Matrix 1 = 1 2 3 4, Matrix 2 = 5 6 7 8):
+# Matrix 1:
+# [1, 2]
+# [3, 4]
+#
+# Matrix 2:
+# [5, 6]
+# [7, 8]
+#
+# Matrix Addition Result:
+# [6, 8]
+# [10, 12]
+
+
+#2. Matrix Using NumPy
+
+# ----------------------------------------
+# Matrix Operations Using NumPy Arrays
+# ----------------------------------------
+
+import numpy as np
+
+# Creating NumPy arrays (matrices)
+matrix1 = np.array([[1, 2, 3],
+                    [4, 5, 6]])
+
+matrix2 = np.array([[10, 20, 30],
+                    [40, 50, 60]])
+
+print("Matrix 1:\n", matrix1)
+print("\nMatrix 2:\n", matrix2)
+
+# Matrix Addition
+matrix_sum = matrix1 + matrix2   # Element-wise addition
+print("\nMatrix Addition:\n", matrix_sum)
+
+# Accessing elements
+print("\nAccessing Specific Elements:")
+print("Element at (0,1) in Matrix1:", matrix1[0, 1])
+print("Element at (1,2) in Matrix2:", matrix2[1, 2])
+
+# Shape and Size
+print("\nMatrix Properties:")
+print("Shape of Matrix1:", matrix1.shape)  # (rows, cols)
+print("Total elements in Matrix1:", matrix1.size)
+
+# Arithmetic Operations
+print("\nMatrix Arithmetic Operations:")
+print("Matrix1 * 2:\n", matrix1 * 2)         # Scalar multiplication
+print("Matrix1 - Matrix2:\n", matrix1 - matrix2)
+print("Matrix1 * Matrix2:\n", matrix1 * matrix2)  # Element-wise multiplication
+
+# Matrix Multiplication (dot product)
+print("\nMatrix Multiplication:\n", np.dot(matrix1, matrix2.T))  # transpose of matrix2
+# Output:
+# Matrix 1:
+#  [[1 2 3]
+#  [4 5 6]]
+#
+# Matrix 2:
+#  [[10 20 30]
+#  [40 50 60]]
+#
+# Matrix Addition:
+#  [[11 22 33]
+#  [44 55 66]]
+#
+# Accessing Specific Elements:
+# Element at (0,1) in Matrix1: 2
+# Element at (1,2) in Matrix2: 60
+#
+# Matrix Properties:
+# Shape of Matrix1: (2, 3)
+# Total elements in Matrix1: 6
+#
+# Matrix Arithmetic Operations:
+# Matrix1 * 2:
+#  [[ 2  4  6]
+#  [ 8 10 12]]
+# Matrix1 - Matrix2:
+#  [[ -9 -18 -27]
+#  [-36 -45 -54]]
+# Matrix1 * Matrix2:
+#  [[ 10  40  90]
+#  [160 250 360]]
+#
+# Matrix Multiplication:
+#  [[140 320]
+#  [320 770]]
+
+
+#3. Code Explaining Array Functions & Operations in NumPy
+
+# ----------------------------------------
+# NumPy Array Functions & Operations
+# ----------------------------------------
+
+import numpy as np
+
+# Creating array
+arr = np.array([10, 20, 30, 40, 50])
+print("Original Array:", arr)
+
+# Basic functions
+print("\nBasic Functions:")
+print("Max element:", arr.max())
+print("Min element:", arr.min())
+print("Sum of all elements:", arr.sum())
+print("Mean (Average):", arr.mean())
+
+# Indexing & Slicing
+print("\nIndexing and Slicing:")
+print("Element at index 2:", arr[2])
+print("Elements from index 1 to 3:", arr[1:4])
+
+# Reshaping array
+arr2 = np.arange(1, 10).reshape(3, 3)
+print("\nReshaped 3x3 Matrix:\n", arr2)
+
+# Transpose
+print("\nTranspose of Matrix:\n", arr2.T)
+
+# Flatten array
+print("\nFlattened Array:", arr2.flatten())
+# Output:
+# Original Array: [10 20 30 40 50]
+#
+# Basic Functions:
+# Max element: 50
+# Min element: 10
+# Sum of all elements: 150
+# Mean (Average): 30.0
+#
+# Indexing and Slicing:
+# Element at index 2: 30
+# Elements from index 1 to 3: [20 30 40]
+#
+# Reshaped 3x3 Matrix:
+#  [[1 2 3]
+#  [4 5 6]
+#  [7 8 9]]
+#
+# Transpose of Matrix:
+#  [[1 4 7]
+#  [2 5 8]
+#  [3 6 9]]
+#
+# Flattened Array: [1 2 3 4 5 6 7 8 9]
+
+
+#4. Code Explaining LIST Operations (for Assignment Theory)
+
+# ----------------------------------------
+# List Operations Explanation Code
+# ----------------------------------------
+
+my_list = [10, 20, 30, 40]
+
+print("Original List:", my_list)
+
+# Append
+my_list.append(50)
+print("After append:", my_list)
+
+# Insert
+my_list.insert(1, 15)
+print("After insert:", my_list)
+
+# Update element
+my_list[2] = 25
+print("After updating index 2:", my_list)
+
+# Remove element
+my_list.remove(40)
+print("After removing 40:", my_list)
+
+# Length of list
+print("Length:", len(my_list))
+
+# Iterating through list
+print("\nIterating through list:")
+for item in my_list:
+    print(item)
+# Output:
+# Original List: [10, 20, 30, 40]
+# After append: [10, 20, 30, 40, 50]
+# After insert: [10, 15, 20, 30, 40, 50]
+# After updating index 2: [10, 15, 25, 30, 40, 50]
+# After removing 40: [10, 15, 25, 30, 50]
+# Length: 5
+#
+# Iterating through list:
+# 10
+# 15
+# 25
+# 30
+# 50
+
+
+#Create two 2×2 matrices using Python lists and perform matrix addition.
+
+# Example 1: Adding two 2x2 matrices using lists
+
+mat1 = [[1, 2],
+        [3, 4]]
+
+mat2 = [[5, 6],
+        [7, 8]]
+
+# Performing matrix addition
+result = [[mat1[i][j] + mat2[i][j] for j in range(2)] for i in range(2)]
+
+print("Matrix 1:", mat1)
+print("Matrix 2:", mat2)
+print("Addition Result:", result)
+# Output:
+# Matrix 1: [[1, 2], [3, 4]]
+# Matrix 2: [[5, 6], [7, 8]]
+# Addition Result: [[6, 8], [10, 12]]
+
+
+#Write a Python program using NumPy to add two matrices of size 3×3.
+
+import numpy as np
+
+# Example 2: Adding two 3x3 matrices using NumPy
+
+a = np.array([[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]])
+
+b = np.array([[10, 11, 12],
+              [13, 14, 15],
+              [16, 17, 18]])
+
+addition = a + b
+
+print("Matrix A:\n", a)
+print("\nMatrix B:\n", b)
+print("\nAddition Result:\n", addition)
+# Output:
+# Matrix A:
+#  [[1 2 3]
+#  [4 5 6]
+#  [7 8 9]]
+#
+# Matrix B:
+#  [[10 11 12]
+#  [13 14 15]
+#  [16 17 18]]
+#
+# Addition Result:
+#  [[11 13 15]
+#  [17 19 21]
+#  [23 25 27]]
+
+
+#Multiply all elements of a 2×3 matrix by 4 using NumPy.
+
+import numpy as np
+
+# Example 3: Scalar multiplication
+
+matrix = np.array([[2, 4, 6],
+                   [1, 3, 5]])
+
+result = matrix * 4   # multiply every element by 4
+
+print("Original Matrix:\n", matrix)
+print("\nAfter Scalar Multiplication:\n", result)
+# Output:
+# Original Matrix:
+#  [[2 4 6]
+#  [1 3 5]]
+#
+# After Scalar Multiplication:
+#  [[ 8 16 24]
+#  [ 4 12 20]]
+
+
+# Write a program to print the element at row 1, column 2 of a matrix using NumPy.
+
+import numpy as np
+
+# Example 4: Accessing elements
+
+mat = np.array([[9, 8, 7],
+                [6, 5, 4],
+                [3, 2, 1]])
+
+print("Matrix:\n", mat)
+print("\nElement at (1,2):", mat[1, 2])  # row 1, column 2
+# Output:
+# Matrix:
+#  [[9 8 7]
+#  [6 5 4]
+#  [3 2 1]]
+#
+# Element at (1,2): 4
+
+
+#Write a Python function that checks if two matrices can be added. If dimensions do not match, show a message.
+# (the next three cells were not run in the notebook)
+
+# Example 5: Add matrices only if shape matches
+
+def add_if_same_size(m1, m2):
+    if len(m1) == len(m2) and len(m1[0]) == len(m2[0]):
+        result = []
+        for i in range(len(m1)):
+            row = []
+            for j in range(len(m1[0])):
+                row.append(m1[i][j] + m2[i][j])
+            result.append(row)
+        return result
+    else:
+        return "Matrices cannot be added (dimension mismatch)"
+
+# Testing
+mat1 = [[1, 2], [3, 4]]
+mat2 = [[10, 20], [30, 40]]
+
+print(add_if_same_size(mat1, mat2))
+# Expected output: [[11, 22], [33, 44]]
+
+
+#Write a program that accepts elements from the user to form a 3×3 matrix.
+
+# Example 6: User input matrix
+
+matrix = []
+
+print("Enter elements for 3x3 matrix:")
+for i in range(3):
+    row = []
+    for j in range(3):
+        value = int(input(f"Enter element ({i},{j}): "))
+        row.append(value)
+    matrix.append(row)
+
+print("\nYour 3x3 Matrix:")
+for row in matrix:
+    print(row)
+
+
+#Write a Python program to find max, min, sum, and mean of a NumPy array.
+
+import numpy as np
+
+# Example 7: Array operations
+
+arr = np.array([10, 20, 30, 40, 50])
+
+print("Array:", arr)
+print("Max:", arr.max())
+print("Min:", arr.min())
+print("Sum:", arr.sum())
+print("Mean:", arr.mean())
+# Expected output:
+# Array: [10 20 30 40 50]
+# Max: 50
+# Min: 10
+# Sum: 150
+# Mean: 30.0
