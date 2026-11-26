@@ -1,0 +1,601 @@
+# Python Assignment 03 - Functions
+
+#1. BASIC FUNCTION STRUCTURE (Explain Function Declaration, Definition, Calling)
+
+# ================================================
+# BASIC FUNCTION EXAMPLE (simple demonstration)
+# ================================================
+
+# Function Declaration + Function Definition
+def greet():
+    print("Hello! This is a user-defined function.")
+
+# Function Calling
+greet()
+# Output: Hello! This is a user-defined function.
+
+
+#2. FUNCTION WITH PARAMETERS
+
+# ================================================
+# FUNCTION WITH PARAMETERS
+# ================================================
+
+def add_numbers(a, b):
+    result = a + b
+    print("Addition:", result)
+
+# Calling the function
+add_numbers(10, 20)
+# Output: Addition: 30
+
+
+#3. FUNCTION WITH RETURN VALUE
+
+# ================================================
+# FUNCTION THAT RETURNS A VALUE
+# ================================================
+
+def square(n):
+    return n * n    # return keyword sends result back
+
+# Receiving returned value
+ans = square(5)
+print("Square is:", ans)
+# Output: Square is: 25
+
+
+#4. FUNCTION WITH DEFAULT ARGUMENTS
+
+# ================================================
+# FUNCTION WITH DEFAULT ARGUMENT
+# ================================================
+
+def welcome(name="Student"):
+    print("Welcome,", name)
+
+welcome()          # No argument → uses default value
+welcome("sachin") # Argument provided → default replaced
+# Output:
+# Welcome, Student
+# Welcome, sachin
+
+
+#*5. FUNCTION WITH VARIABLE NUMBER OF ARGUMENTS ( args )
+
+# ================================================
+# *args → Variable-length positional arguments
+# ================================================
+
+def total_sum(*nums):
+    print("Numbers received:", nums)
+    print("Total:", sum(nums))
+
+total_sum(10, 20)
+total_sum(1, 2, 3, 4, 5)
+# Output:
+# Numbers received: (10, 20)
+# Total: 30
+# Numbers received: (1, 2, 3, 4, 5)
+# Total: 15
+
+
+#**6. FUNCTION WITH KEYWORD VARIABLE ARGUMENTS ( kwargs )
+
+# ================================================
+# **kwargs → Variable-length keyword arguments
+# ================================================
+
+def student_info(**data):
+    print("Student Details:")
+    for key, value in data.items():
+        print(key, ":", value)
+
+student_info(name="Sachin", age=18, course="B.Tech")
+# Output:
+# Student Details:
+# name : Sachin
+# age : 18
+# course : B.Tech
+
+
+#7. CHECKING IF TRIANGLE IS RIGHT-ANGLED (MAIN ASSIGNMENT CODE)
+
+# ======================================================
+# PROGRAM: Check if triangle is right-angled using function
+# ======================================================
+
+import math
+
+# Function Definition
+def is_right_triangle(a, b, c):
+    # Sort sides so that c becomes the largest side (hypotenuse)
+    sides = sorted([a, b, c])
+
+    # Apply Pythagoras Theorem: hypotenuse² = side1² + side2²
+    if math.isclose(sides[2]**2, sides[0]**2 + sides[1]**2):
+        return True
+    else:
+        return False
+
+# Taking input from user
+a = float(input("Enter length of first side: "))
+b = float(input("Enter length of second side: "))
+c = float(input("Enter length of third side: "))
+
+# Function Calling
+if is_right_triangle(a, b, c):
+    print("It IS a Right Angled Triangle.")
+else:
+    print("It is NOT a Right Angled Triangle.")
+# Sample run (inputs: 3, 4, 5):
+# Enter length of first side:  3
+# Enter length of second side:  4
+# Enter length of third side:  5
+# It IS a Right Angled Triangle.
+
+
+#8. EXTRA VERSION: WITHOUT MATH MODULE
+
+def right_triangle(a, b, c):
+    x, y, z = sorted([a, b, c])  # z is largest
+    return z*z == x*x + y*y
+
+print(right_triangle(3,4,5))  # True
+# Output: True
+
+
+#9. EXPLAINING SYSTEM-DEFINED (BUILT-IN) FUNCTIONS
+
+# ================================================
+# Examples of SYSTEM DEFINED functions
+# ================================================
+
+print(len("Hello"))       # Gives length
+print(max(5, 10, 2))      # Largest value
+print(min(5, 10, 2))      # Smallest value
+print(type(10))           # Shows datatype
+print(sum([1,2,3]))       # Adds list items
+# Output:
+# 5
+# 10
+# 2
+# <class 'int'>
+# 6
+
+
+#10. EXPLAINING USER-DEFINED FUNCTIONS
+
+# ================================================
+# USER DEFINED FUNCTION
+# ================================================
+
+def hello():
+    print("This is a user-defined function.")
+
+hello()
+# Output: This is a user-defined function.
+
+
+#11. FUNCTIONS USING POSITIONAL + KEYWORD ARGUMENTS
+
+# ================================================
+# MIXING POSITIONAL AND KEYWORD ARGUMENTS
+# ================================================
+
+def display(name, age, city):
+    print("Name:", name)
+    print("Age:", age)
+    print("City:", city)
+
+# Positional + Keyword arguments together
+display("DSachin", age=18, city="Pune")
+# Output:
+# Name: DSachin
+# Age: 18
+# City: Pune
+
+
+#12. COMMAND LINE ARGUMENT PROGRAM (BASIC EXAMPLE)
+
+# ================================================
+# COMMAND LINE ARGUMENTS (Concept Only)
+# ================================================
+
+# This code works only in terminal:
+# python file.py 10 20
+
+import sys
+
+print("Total arguments:", len(sys.argv))
+print("Arguments passed:", sys.argv)
+# Output (inside Jupyter, sys.argv holds the Jupyter kernel launcher details):
+# Total arguments: 3
+# Arguments passed: ['...\\ipykernel_launcher.py', '-f', '...\\runtime\\kernel-xxxx.json']
+#
+# In a terminal, "python file.py 10 20" would give:
+# Total arguments: 3
+# Arguments passed: ['file.py', '10', '20']
+
+
+#13. STANDARD PYTHON ERRORS EXAMPLES
+
+# ZeroDivisionError
+# print(10/0)
+
+# NameError
+# print(x)
+
+# TypeError
+# print("hi" + 5)
+
+# IndexError
+l = [1, 2, 3]
+# print(l[5])
+
+# KeyError
+d = {"name":"Anshika"}
+# print(d["age"])
+
+
+#Check even or odd
+
+def is_even(n):
+    return n % 2 == 0
+
+print(is_even(10))
+# Output: True
+
+
+#Area of triangle
+
+def area_triangle(b, h):
+    return 0.5 * b * h
+
+print(area_triangle(10,5))
+# Output: 25.0
+
+
+#Factorial using function
+
+def factorial(n):
+    f = 1
+    for i in range(1, n+1):
+        f *= i
+    return f
+
+print(factorial(5))
+# Output: 120
+
+
+# =============================================================================
+# EXERCISE QUESTIONS
+# =============================================================================
+
+#Q1
+def calculate_bill(pizzas, toppings_per_pizza):
+    """
+    Calculate the total cost of the pizza order.
+
+    Parameters:
+        pizzas (int): Number of pizzas ordered
+        toppings_per_pizza (int): Number of toppings per pizza
+
+    Returns:
+        int: Total bill amount in ₹
+    """
+    base_price = 150
+    topping_price = 20
+    delivery_charge = 50
+
+    # Calculate total pizza + topping cost
+    total = (base_price + topping_price * toppings_per_pizza) * pizzas
+
+    # Add delivery charge if total is 500 or less
+    if total <= 500:
+        total += delivery_charge
+
+    return total
+
+
+def display_bill(name, amount):
+    """
+    Display a friendly bill message.
+    """
+    print(f"Hello {name}, your total bill is ₹{amount}.")
+
+
+# ---------- Main Program ----------
+name = input("Enter your name: ")
+pizzas = int(input("Enter the number of pizzas: "))
+toppings_per_pizza = int(input("Enter the number of toppings per pizza: "))
+
+# Calculate and display the bill
+total_amount = calculate_bill(pizzas, toppings_per_pizza)
+display_bill(name, total_amount)
+# Sample run (inputs: sachin, 56, 67):
+# Enter your name:  sachin
+# Enter the number of pizzas:  56
+# Enter the number of toppings per pizza:  67
+# Hello sachin, your total bill is ₹83440.
+
+
+# question no 2
+
+# Q2
+def late_fee(days_late):
+    if days_late <= 5:
+        return days_late * 2
+    elif days_late <= 10:
+        return (5 * 2) + (days_late - 5) * 5
+    else:
+        return (5 * 2) + (5 * 5) + (days_late - 10) * 10
+
+def print_receipt(name, days, fee):
+    print("---- Library Receipt ----")
+    print("Name:", name)
+    print("Days Late:", days)
+    print("Total Fine: ₹", fee)
+
+# ---- Input Section ----
+name = input("Enter student's name: ")
+days = int(input("Enter number of days late: "))
+
+# ---- Processing ----
+fee = late_fee(days)
+
+# ---- Output ----
+print_receipt(name, days, fee)
+# Sample run (inputs: sachin, 67):
+# Enter student's name:  sachin
+# Enter number of days late:  67
+# ---- Library Receipt ----
+# Name: sachin
+# Days Late: 67
+# Total Fine: ₹ 605
+
+
+# question no 3
+
+# Q3
+def calculate_fare(distance, passenger_type, age):
+
+    base_rate = 10  # ₹10 per km
+    fare = distance * base_rate
+
+    # Apply discount
+    if passenger_type.lower() == "student":
+        fare *= 0.80   # 20% discount
+    elif passenger_type.lower() == "senior" or age >= 60:
+        fare *= 0.70   # 30% discount
+
+    return fare
+
+
+def print_ticket(name, distance, fare):
+
+    print("\n----- Bus Ticket -----")
+    print(f"Passenger Name : {name}")
+    print(f"Distance       : {distance} km")
+    print(f"Total Fare     : ₹{fare:.2f}")
+    print("----------------------")
+
+
+# ---------- Main Program ----------
+name = input("Enter passenger's name: ")
+distance = float(input("Enter travel distance in km: "))
+age = int(input("Enter age of passenger: "))
+ptype = input("Enter passenger type (student/senior/normal): ")
+
+total_fare = calculate_fare(distance, ptype, age)
+print_ticket(name, distance, total_fare)
+# Sample run (inputs: sachin, 34, 456, mormal):
+# Enter passenger's name:  sachin
+# Enter travel distance in km:  34
+# Enter age of passenger:  456
+# Enter passenger type (student/senior/normal):  mormal
+#
+# ----- Bus Ticket -----
+# Passenger Name : sachin
+# Distance       : 34.0 km
+# Total Fare     : ₹238.00
+# ----------------------
+
+
+# question no 4
+
+# Q4
+import time
+
+def check_tank(level):
+    if level < 20:
+        return "Critical: Fill the tank now!"
+    elif level <= 50:
+        return "Low: Please plan to fill soon."
+    else:
+        return "Sufficient water available."
+
+def display_alert(message):
+    print("\n---- Tank Alert ----")
+    print(time.ctime())  # Current timestamp
+    print(message)
+
+# ---- Input Section ----
+level = int(input("Enter current water level (%): "))
+
+# ---- Processing ----
+alert_message = check_tank(level)
+
+# ---- Output ----
+display_alert(alert_message)
+# Sample run (input: 67):
+# Enter current water level (%):  67
+#
+# ---- Tank Alert ----
+# Sun Nov 23 19:27:40 2025
+# Sufficient water available.
+
+
+# question no 5
+
+# Q5
+def get_item_price(item):
+    menu = {"tea":10, "coffee":20, "sandwich":50, "thali":100}
+    return menu.get(item.lower(), 0)
+
+def calculate_total(order_list):
+    total = 0
+    for item in order_list:
+        total += get_item_price(item)
+    return total
+
+# ---- Input Section ----
+print("---- Café Menu ----")
+print("Tea - ₹10 | Coffee - ₹20 | Sandwich - ₹50 | Thali - ₹100")
+print("Type 'done' when finished ordering.\n")
+
+order_list = []
+while True:
+    item = input("Enter an item to order: ")
+    if item.lower() == "done":
+        break
+    if get_item_price(item) == 0:
+        print("Item not on the menu. Please try again.")
+    else:
+        order_list.append(item)
+
+# ---- Processing ----
+total_bill = calculate_total(order_list)
+
+# ---- Output ----
+print("\n---- Bill Summary ----")
+print("Items Ordered:", ", ".join(order_list) if order_list else "None")
+print("Total Amount: ₹", total_bill)
+# Sample run (inputs: coffee, done):
+# ---- Café Menu ----
+# Tea - ₹10 | Coffee - ₹20 | Sandwich - ₹50 | Thali - ₹100
+# Type 'done' when finished ordering.
+#
+# Enter an item to order:  coffee
+# Enter an item to order:  done
+#
+# ---- Bill Summary ----
+# Items Ordered: coffee
+# Total Amount: ₹ 20
+
+
+# question no 6
+
+# Q6
+def ticket_price(show_type, quantity):
+    prices = {"morning":150, "afternoon":200, "night":250}
+    amount = prices.get(show_type.lower(), 0) * quantity
+    if quantity > 4:
+        amount *= 0.9   # 10% discount
+    return amount
+
+def print_booking(name, amount):
+    print("---- Movie Booking ----")
+    print("Name:", name)
+    print("Total Amount: ₹", amount)
+
+# Example
+amount = ticket_price("night", 5)
+print_booking("Kush", amount)
+
+# ---- Input Section ----
+print("Show Types: Morning (₹150), Afternoon (₹200), Night (₹250)")
+name = input("Enter your name: ")
+show = input("Enter show type (morning/afternoon/night): ")
+quantity = int(input("Enter number of tickets: "))
+
+# ---- Processing ----
+amount = ticket_price(show, quantity)
+
+# ---- Output ----
+if amount == 0:
+    print("\nInvalid show type entered. Please try again.")
+else:
+    print_booking(name, amount)
+# Sample run (inputs: sachin, night, 67):
+# ---- Movie Booking ----
+# Name: Kush
+# Total Amount: ₹ 1125.0
+# Show Types: Morning (₹150), Afternoon (₹200), Night (₹250)
+#
+# Enter your name:  sachin
+# Enter show type (morning/afternoon/night):  night
+# Enter number of tickets:  67
+#
+# ---- Movie Booking ----
+# Name: sachin
+# Total Amount: ₹ 15075.0
+
+
+# question no 7
+
+# Q7
+def best_two_avg(m1, m2, m3):
+    marks = sorted([m1, m2, m3], reverse=True)
+    return (marks[0] + marks[1]) / 2
+
+def grade(avg):
+    if avg >= 80:
+        return "A"
+    elif avg >= 60:
+        return "B"
+    else:
+        return "C"
+
+# ---- Input Section ----
+name = input("Enter student's name: ")
+m1 = float(input("Enter marks for subject 1: "))
+m2 = float(input("Enter marks for subject 2: "))
+m3 = float(input("Enter marks for subject 3: "))
+
+# ---- Processing ----
+average = best_two_avg(m1, m2, m3)
+student_grade = grade(average)
+
+# ---- Output ----
+print("\n---- Result ----")
+print("Name:", name)
+print("Best Two Average:", average)
+print("Grade:", student_grade)
+# Sample run (inputs: sachin, 67, 98, 89):
+# Enter student's name:  sachin
+# Enter marks for subject 1:  67
+# Enter marks for subject 2:  98
+# Enter marks for subject 3:  89
+#
+# ---- Result ----
+# Name: sachin
+# Best Two Average: 93.5
+# Grade: A
+
+
+# question no 8
+
+# Q8
+def extra_charge(usage_gb):
+    if usage_gb <= 1.5:
+        return 0
+    extra = usage_gb - 1.5
+    # ₹10 per extra 0.1 GB
+    return round((extra / 0.1) * 10, 2)
+
+def show_summary(name, usage, charge):
+    print("---- Data Usage Summary ----")
+    print("User:", name)
+    print("Usage Today:", usage, "GB")
+    print("Extra Charge: ₹", charge)
+
+# Example
+usage = 2.1
+charge = extra_charge(usage)
+show_summary("Kush", usage, charge)
+# Output:
+# ---- Data Usage Summary ----
+# User: Kush
+# Usage Today: 2.1 GB
+# Extra Charge: ₹ 60.0
