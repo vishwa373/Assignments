@@ -1,0 +1,786 @@
+# Python Assignment 01 - Strings, Operators, Lists, Tuples and Dictionaries
+
+# =============================================================================
+# LIST, TUPLE AND DICTIONARY - basics (strings, print)
+# =============================================================================
+
+print("Hello World") ## using the print function
+# Output: Hello World
+
+print("Hello World\nJello World")  ## print the string in the the two different lines
+# Output:
+# Hello World
+# Jello World
+
+print("Hello World")  ## print the string in the the the different line by using print function
+print("Hello World")
+print("Hello World")
+# Output:
+# Hello World
+# Hello World
+# Hello World
+
+print("Hello World\nHello World\nHello World") ## print the string in the different line by using \n
+# Output:
+# Hello World
+# Hello World
+# Hello World
+
+print("Hello" + "Python") ## addition of string
+# Output: HelloPython
+
+print("Hello"+" "+"Python")## addition of string with the proper space
+# Output: Hello Python
+
+print("Hello" +"_" + "Python") ## adittion of string with the the proper underscore
+# Output: Hello_Python
+
+print("Hello "+"Python")
+# Output: Hello Python
+
+str1 = 'Hello World!'
+print(str1)## printing by defining the string
+# Output: Hello World!
+
+
+# --- String indexing and slicing ---
+
+str1 = 'Hello World!'
+print(str1)
+print(str1[0]) ## print only the first letter of string
+print(str1[2:5]) ## print 3rd letter to 5th letter
+print(str1[2:]) ## print all letter AFTER 2ND LETTER
+print(str1[:3])  ## print all letter before 4th letter
+print(str1*2)   ## print string two times
+print(str1+"TEST") ## addition of string
+# Output:
+# Hello World!
+# H
+# llo
+# llo World!
+# Hel
+# Hello World!Hello World!
+# Hello World!TEST
+
+str1 = 'Hello World!'
+print(str1[-1])  ## print by negative indexing
+
+str1 = 'Hello World!'
+print(str1[:11])
+# Output: Hello World
+
+str1 = 'Hello World!'
+print(str1)
+# Output: Hello World!
+
+str1 = 'Hello World!'
+print(str1[0:2])
+print(str1[:2])
+# Output:
+# He
+# He
+
+str1=str
+
+# ERROR DEMO (NameError: name 'rt' is not defined)
+# str=rt ## define string in proper semicolon
+# print(str1)
+
+str="rt"
+print(str1)
+# Output: rt
+
+str1 = 'Hello World!'
+print(str1)
+#Prints complete string
+# Output: Hello World!
+
+str1 = 'Hello World!'
+print(str1[0])
+#Prints first character of string
+# Output: H
+
+str1 = 'Hello World!'
+print(str1[2:5])
+#Prints third, fourth and fifth character of the string
+# Output: llo
+
+#Prints all the characters from the third
+str1 = 'Hello World!'
+
+print(str1[2:])
+# Output: llo World!
+
+str1 = 'Hello World!'
+print(str1[-1])
+#Prints the last character of the string
+# Output: !
+
+#prints the string twice with a space in between
+str1 = 'Hello World!'
+print(str1+" "+str1)
+# Output: Hello World! Hello World!
+
+type(str1)
+# Output: str
+
+#print the string in reverse
+print(str1[::-1])
+# Output: !dlroW olleH
+
+print("#this is a comment") #the string is printed with hash character
+# Output: #this is a comment
+
+
+# =============================================================================
+# ARITHMETIC AND RELATIONAL OPERATORS
+# =============================================================================
+
+2+3 #this is addtition of 2 and 3
+# Output: 5
+
+5-2 #this is subtraction of five from two
+# Output: 3
+
+3*5 #three multiplied by five
+# Output: 15
+
+45/5 #45 divided by 5
+# Output: 9.0
+
+2**4 #two raised to the power of four
+# Output: 16
+
+18%4 #modulus operator it returns the remainder
+# Output: 2
+
+18//4 ## only give the quotient
+# Output: 4
+
+5<9 #relational operator
+# Output: True
+
+11>6
+# Output: True
+
+6<11
+# Output: True
+
+11<6
+# Output: False
+
+6<=6
+# Output: True
+
+11>=5
+# Output: True
+
+5//4
+# Output: 1
+
+5//4 #floor division
+# Output: 1
+
+4//5
+# Output: 0
+
+2+10*10+3 #Order of operation
+# Output: 105
+
+(2+10)*(10+3) #Can use parentheses to specify order
+# Output: 156
+
+5/4 #division of five by four
+# Output: 1.25
+
+4/5 #division of four by five
+# Output: 0.8
+
+4//5 #returns the quotient after dividing four by five
+# Output: 0
+
+# ERROR DEMO (ZeroDivisionError: division by zero)
+# 1/0 #division of one by zero
+
+# ERROR DEMO (ZeroDivisionError: integer division or modulo by zero)
+# 1//0 #returns the quotient part after dividing one by zero
+
+1//1
+# Output: 1
+
+mane = "abc"
+num1 = 100
+num2 = 101.15
+
+type(mane)
+# Output: str
+
+type(num1)
+# Output: int
+
+type(num2)
+# Output: float
+
+
+# =============================================================================
+# LISTS
+# =============================================================================
+
+list1=[1,2,3]
+print(list1)
+# Output: [1, 2, 3]
+
+#list constructor
+
+tlist = list(("apple", "banana", "cherry"))
+print(tlist)
+# Output: ['apple', 'banana', 'cherry']
+
+print(tlist[1]) ## INDEXING THE LIST
+# Output: banana
+
+print(tlist[-1]) ## negative indexing
+# Output: cherry
+
+removed = tlist.pop()
+
+print(removed) ## poping the list
+# Output: cherry
+
+del tlist[1]  #deleting specific character by using indexing
+
+print(tlist)
+# Output: ['apple']
+
+list1=[1,2,3]
+list2=[4,5,6]
+list3=[7,8,9]
+
+matrix = [list1, list2, list3]
+print(matrix)
+# Output: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+
+# =============================================================================
+# PRACTISE QUESTION
+# =============================================================================
+
+#DEVELOP A STUDENT RECORD MANAGEMENT USING PYTHON.
+#PERFORM THE FOLLOWING OPERATIONS IN THE ORDER -
+
+#1 create a list named students containing five names
+#2 append a new student Sarthak at end of the list
+#3 insert riya at position 2 in the list
+#4 count how many times rahul appears in the list
+#5 find the index of riya
+#6 remove the first occurence of rahul from the list
+#7 pop the student from the list and store them in a variable removed_student
+#8 copy the list to a new variable backup_students
+#9 extend backup_students with another list ['karan','meena']
+#10 sort the backup_student list alphabetically
+#11 reverse the backup_ list
+#12 clear the original student list
+#13 print the result after each op to track changes
+
+student_list = ['Advait', 'Amogh', 'Dhruv', 'Aadi', 'Mihir']
+
+print(student_list)
+
+#printing the original list
+# Output: ['Advait', 'Amogh', 'Dhruv', 'Aadi', 'Mihir']
+
+student_list.append('Sarthak')
+
+print(student_list)
+
+#printing appended list
+# Output: ['Advait', 'Amogh', 'Dhruv', 'Aadi', 'Mihir', 'Sarthak']
+
+student_list.insert(1,'Riya' )
+
+print(student_list)
+
+#printing the list after inserting Riya
+# Output (as shown in the notebook, this cell had been run more than once):
+# ['Advait', 'Riya', 'Riya', 'Riya', 'Dhruv', 'Aadi', 'Mihir', 'Sarthak']
+
+student_list.insert(1, 'Riya')
+
+print(student_list)
+
+#printing the list after inserting Riya
+# Output: ['Advait', 'Riya', 'Riya', 'Riya', 'Riya', 'Dhruv', 'Aadi', 'Mihir', 'Sarthak']
+
+student_list.count('Riya')
+
+#printing the number of times Rahul appears in the list
+# Output: 4
+
+student_list.index('Riya')
+
+#Printing index of Riya
+# Output: 1
+
+removed_student = student_list.pop()
+
+print(removed_student)
+
+#Printing the removed student
+# Output: Sarthak
+
+print(student_list)
+# Output: ['Advait', 'Riya', 'Riya', 'Riya', 'Riya', 'Dhruv', 'Aadi', 'Mihir']
+
+backup_students = student_list
+
+print(backup_students)
+
+#copying the original list to new var 'backup_students'
+# Output: ['Advait', 'Riya', 'Riya', 'Riya', 'Riya', 'Dhruv', 'Aadi', 'Mihir']
+
+backup_students.extend(['Karan', 'Meena'])
+
+print(backup_students)
+
+#sorting the backup list alphabetically
+# Output: ['Advait', 'Riya', 'Riya', 'Riya', 'Riya', 'Dhruv', 'Aadi', 'Mihir', 'Karan',
+#          'Meena', 'Karan', 'Meena']
+
+backup_students.sort()
+
+print(backup_students)
+
+#sorting the backup list alphabetically
+# Output: ['Aadi', 'Advait', 'Dhruv', 'Karan', 'Karan', 'Meena', 'Meena', 'Mihir', 'Riya',
+#          'Riya', 'Riya', 'Riya']
+
+backup_students.reverse()
+
+print(backup_students)
+
+#reversing the backup list
+# Output: ['Riya', 'Riya', 'Riya', 'Riya', 'Mihir', 'Meena', 'Meena', 'Karan', 'Karan',
+#          'Dhruv', 'Advait', 'Aadi']
+
+student_list.clear()
+
+print(student_list)
+
+#clearing the original list
+# Output: []
+
+#operation completed
+
+
+# =============================================================================
+# DICTIONARIES IN PYTHON
+# =============================================================================
+
+#Creating a dictionary
+
+my_dict = {'key1':'value1','key2':'value2'}
+
+my_dict['key2']
+
+#call values using their key
+# Output: 'value2'
+
+new_d1 = {'key1':123,'key2':[12,23,31],'key3':['item0','item1','item2']}
+
+#new dictionary having lists and integer
+
+new_d1['key3']
+
+#calling the item/list using their key
+# Output: ['item0', 'item1', 'item2']
+
+new_d1['key3'][0]
+
+#calling an index
+# Output: 'item0'
+
+new_d1['key2'][2]
+
+#calling an index
+# Output: 31
+
+new_d1['key3'][0] = [1,2,3]
+
+#adding a list in a list
+
+print(new_d1)
+# Output: {'key1': 123, 'key2': [12, 23, 31], 'key3': [[1, 2, 3], 'item1', 'item2']}
+
+new_d1['key3'][0][1]
+
+#printing an element from the list inside the list in the dictionary
+# Output: 2
+
+new_d1['key3'][2] = [[1,2,3],[4,5,6],[7,8,9]]
+
+print(new_d1)
+
+#adding a matrix in a list in a dictionary
+# Output: {'key1': 123, 'key2': [12, 23, 31], 'key3': [[1, 2, 3], 'item1', [[1, 2, 3],
+#          [4, 5, 6], [7, 8, 9]]]}
+
+new_d1['key3'][2][1][2]
+# Output: 6
+
+new_d1['key1'] = 123
+
+new_d1['key1']
+# Output: 123
+
+
+# --- NESTING WITH DICTIONARIES ---
+
+new_d1.keys()
+
+#method to run a list of all keys
+# Output: dict_keys(['key1', 'key2', 'key3'])
+
+#methos to grab all values
+
+new_d1.values()
+# Output: dict_values([123, [12, 23, 31], [[1, 2, 3], 'item1', [[1, 2, 3], [4, 5, 6], [7, 8, 9]]]])
+
+
+# =============================================================================
+# TUPLE
+# =============================================================================
+
+#start of tuple code
+
+thistuple = ("apple", "banana", "cherry", "melon", "kiwi")
+print(thistuple)
+# Output: ('apple', 'banana', 'cherry', 'melon', 'kiwi')
+
+#tuple can duplicate values
+
+thistuple = ("apple", "banana", "cherry", "banana", "apple")
+print(thistuple)
+# Output: ('apple', 'banana', 'cherry', 'banana', 'apple')
+
+thistuple = ("apple", "banana", "cherry") ## finding the length of tuple
+print(len(thistuple))
+# Output: 3
+
+tuple1 = ("apple", "banana", "cherry")
+print(tuple1)
+# Output: ('apple', 'banana', 'cherry')
+
+print(type(tuple1)) ## type of the string
+# Output: <class 'tuple'>
+
+tuple2 = (1, 5, 7, 9, 3)
+print(tuple2)
+# Output: (1, 5, 7, 9, 3)
+
+print(type(tuple2))
+# Output: <class 'tuple'>
+
+tuple3 = ("True", "False", "False")
+print(tuple3)
+# Output: ('True', 'False', 'False')
+
+print(type(tuple3))
+# Output: <class 'tuple'>
+
+tuple4 = (True, False, False)
+print(tuple4)
+# Output: (True, False, False)
+
+print(type(tuple4))
+# Output: <class 'tuple'>
+
+tuple5 = ("apple", "banana", 40, "cherry")
+print(type(tuple5))
+# Output: <class 'tuple'>
+
+thistuple6 = tuple(("apple", "banana", 40, "cherry"))
+
+print(thistuple6)
+# Output: ('apple', 'banana', 40, 'cherry')
+
+tuple7 = ("apple", "banana", "cherry")
+print(tuple7[1]) ## indexing the tuple
+# Output: banana
+
+tuple8 = ("apple", "banana", "cherry")
+print(tuple8[-1]) ## negative indexing of tuple
+# Output: cherry
+
+tuple9 = ("apple", "banana", "cherry", "kiwi", "melon", "blackcurrant",)
+print(tuple9[2:5])
+# Output: ('cherry', 'kiwi', 'melon')
+
+tuple10 = ("apple", "banana", "cherry", "kiwi", "melon", "blackcurrant",)
+print(tuple10[-4:-1])
+# Output: ('cherry', 'kiwi', 'melon')
+
+# empty tuple
+a=()
+
+a
+# Output: ()
+
+#tuple with single item
+b = (10,)
+
+#tuple is immutable
+msg = ('Fall', 'In', 'Line')
+# ERROR DEMO (TypeError: 'tuple' object does not support item assignment)
+# msg[0] = 'FALL'
+
+#Mutable lists, immutable string
+s = ([1, 2, 3, 4], [4, 5], 'Ocelot')
+s[0][2] = 34
+print(s)
+# Output: ([1, 2, 34, 4], [4, 5], 'Ocelot')
+
+my_tuple = (1, 2, 3)
+
+print("Original tuple:", my_tuple)
+# Output: Original tuple: (1, 2, 3)
+
+#list to be added
+my_list = [4, 5]
+
+#add new list as an item to the tuple
+new_tuple = my_tuple + (my_list,)
+print("Tuple after adding list:", new_tuple)
+# Output: Tuple after adding list: (1, 2, 3, [4, 5])
+
+#Access the list inside the tuple
+
+innerlist = new_tuple[3]
+
+#Access the second element of the list
+
+inlist = new_tuple[3][1]
+
+print(innerlist)
+
+print(inlist)
+# Output:
+# [4, 5]
+# 5
+
+#changing tuple values
+#convert tuple into list, change the list amd then convert the list back to tuple
+
+tuple11 = ("apple", "banana", "cherry")
+tp = list(tuple11)
+tp[1] = "kiwi"
+tuple11 = tuple(tp)
+print(tuple11)
+# Output: ('apple', 'kiwi', 'cherry')
+
+
+# =============================================================================
+# QUESTION 1 (cities tuple)
+# =============================================================================
+
+cities = ('Delhi', 'Mumubai', 'Chennai', 'Delhi', 'Kolkata')
+print(cities[0])
+print(cities[3:])
+# Output:
+# Delhi
+# ('Delhi', 'Kolkata')
+
+list_cit = list(cities)
+list_cit[2] = 'Bengaluru'
+cities = tuple(list_cit)
+print(cities)
+# Output: ('Delhi', 'Mumubai', 'Bengaluru', 'Delhi', 'Kolkata')
+
+(d1, d2, d3, d4, d5) = cities
+print(d1, d2, d3, d4, d5)
+# Output: Delhi Mumubai Bengaluru Delhi Kolkata
+
+print(cities.count('Delhi'))
+# Output: 2
+
+print(cities.count('Kolkata'))
+# Output: 1
+
+
+# =============================================================================
+# PYTHON ASSIGNMENT 1
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# LIST OPERATIONS IN PYTHON
+# -----------------------------------------------------------------------------
+
+# Creating a list
+numbers = [10, 20, 30, 40]
+print("Original List:", numbers)
+# Output: Original List: [10, 20, 30, 40]
+
+# 1. append() → Add element at end
+numbers.append(50)
+print("After append(50):", numbers)
+
+
+# 2. insert() → Insert at specific index
+numbers.insert(2, 25)  # Insert 25 at index 2
+print("After insert(2, 25):", numbers)
+
+# 3. remove() → Remove first matching element
+numbers.remove(40)
+print("After remove(40):", numbers)
+
+# 4. pop() → Remove element by index
+removed_item = numbers.pop(1)
+print("After pop(1):", numbers)
+print("Popped Item:", removed_item)
+
+# 5. sort() → Sort the list
+numbers.sort()
+print("After sort():", numbers)
+
+# 6. reverse() → Reverse the list
+numbers.reverse()
+print("After reverse():", numbers)
+
+# 7. extend() → Add multiple elements
+numbers.extend([60, 70, 80])
+print("After extend([60,70,80]):", numbers)
+
+# 8. count() → Count occurrences
+print("Count of 25:", numbers.count(25))
+
+# 9. index() → Get index of element
+print("Index of 50:", numbers.index(50))
+# Output:
+# After append(50): [10, 20, 30, 40, 50]
+# After insert(2, 25): [10, 20, 25, 30, 40, 50]
+# After remove(40): [10, 20, 25, 30, 50]
+# After pop(1): [10, 25, 30, 50]
+# Popped Item: 20
+# After sort(): [10, 25, 30, 50]
+# After reverse(): [50, 30, 25, 10]
+# After extend([60,70,80]): [50, 30, 25, 10, 60, 70, 80]
+# Count of 25: 1
+# Index of 50: 0
+
+
+# -----------------------------------------------------------------------------
+# TUPLE OPERATIONS IN PYTHON
+# -----------------------------------------------------------------------------
+
+# Creating a tuple
+t = (10, 20, 30, 20, 40, 50)
+print("Original Tuple:", t)
+# Output: Original Tuple: (10, 20, 30, 20, 40, 50)
+
+# 1. count() → Count occurrences of a value
+print("Count of 20:", t.count(20))
+# Output: Count of 20: 2
+
+# 2. index() → First index of a value
+print("Index of 30:", t.index(30))
+# Output: Index of 30: 2
+
+# 3. Slicing → t[start:end]
+print("Slicing t[1:4]:", t[1:4])
+# Output: Slicing t[1:4]: (20, 30, 20)
+
+# 4. Concatenation → Joining two tuples
+t2 = (100, 200)
+print("Concatenated Tuple:", t + t2)
+# Output: Concatenated Tuple: (10, 20, 30, 20, 40, 50, 100, 200)
+
+# 5. Unpacking → Assign tuple values to variables
+a, b, c, d, e, f = t
+print("Unpacked Values:", a, b, c, d, e, f)
+# Output: Unpacked Values: 10 20 30 20 40 50
+
+# 6. Tuple repetition using * operator
+print("Tuple repeated 3 times:", t * 3)
+# Output: Tuple repeated 3 times: (10, 20, 30, 20, 40, 50, 10, 20, 30, 20, 40, 50, 10, 20, 30, 20, 40, 50)
+
+# 7. max() and min() functions
+print("Max value:", max(t))
+print("Min value:", min(t))
+# Output:
+# Max value: 50
+# Min value: 10
+
+# 8. len() function
+print("Length of tuple:", len(t))
+# Output: Length of tuple: 6
+
+
+# -----------------------------------------------------------------------------
+# DICTIONARY
+# -----------------------------------------------------------------------------
+
+# Creating dictionary
+student = {
+    "name": "sachin",
+    "age": 18,
+    "course": "B.Tech"
+}
+print("Original Dictionary:", student)
+# Output: Original Dictionary: {'name': 'sachin', 'age': 18, 'course': 'B.Tech'}
+
+# 1. Accessing values
+print("Name:", student["name"])
+# Output: Name: sachin
+
+student["city"] = "Pune"
+print("After adding city:", student)
+# Output: After adding city: {'name': 'sachin', 'age': 18, 'course': 'B.Tech', 'city': 'Pune'}
+
+# 3. update() → Update or add multiple key-value pairs
+student.update({"age": 19, "semester": 1})
+print("After update():", student)
+# Output: After update(): {'name': 'sachin', 'age': 19, 'course': 'B.Tech', 'city': 'Pune', 'semester': 1}
+
+# 4. pop() → Remove key and return value
+removed_age = student.pop("age")
+print("After pop('age'):", student)
+print("Removed Age:", removed_age)
+# Output:
+# After pop('age'): {'name': 'sachin', 'course': 'B.Tech', 'city': 'Pune', 'semester': 1}
+# Removed Age: 19
+
+# 5. keys(), values(), items()
+print("Keys:", student.keys())
+print("Values:", student.values())
+print("Items:", student.items())
+# Output:
+# Keys: dict_keys(['name', 'course', 'city', 'semester'])
+# Values: dict_values(['sachin', 'B.Tech', 'Pune', 1])
+# Items: dict_items([('name', 'sachin'), ('course', 'B.Tech'), ('city', 'Pune'), ('semester', 1)])
+
+# 6. get() → Safe value access
+print("Course:", student.get("course"))
+# Output: Course: B.Tech
+
+# 7. popitem() → Removes last inserted item
+removed_item = student.popitem()
+print("After popitem():", student)
+print("Removed Item:", removed_item)
+# Output:
+# After popitem(): {'name': 'sachin', 'course': 'B.Tech', 'city': 'Pune'}
+# Removed Item: ('semester', 1)
+
+# 8. clear() → Remove all items
+temp_dict = {"a": 1, "b": 2}
+temp_dict.clear()
+print("After clear():", temp_dict)
+# Output: After clear(): {}
+
+# 9. Copy dictionary
+new_student = student.copy()
+print("Copied dictionary:", new_student)
+# Output: Copied dictionary: {'name': 'sachin', 'course': 'B.Tech', 'city': 'Pune'}
+
+# 10. Set default value
+student.setdefault("gender", "Female")
+print("After setdefault():", student)
+# Output: After setdefault(): {'name': 'sachin', 'course': 'B.Tech', 'city': 'Pune', 'gender': 'Female'}
